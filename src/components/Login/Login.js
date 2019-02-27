@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import ApiService from './../../services/Api';
+import UserStorage from './../../services/UserStorage';
 import './Login.scss';
 
 class Login extends Component {
-  constructor() {
-    super();
-    this.submit = this.submit.bind(this);
-  }
+  constructor(props) {
+    super(props);
 
-  async submit(event) {
+    this.state ={
+      isAuthenticated: UserStorage.getAuthStatus()
+    };
+  };
+
+  submit = async (event) => {
     event.preventDefault();
 
     const response = await ApiService.post('users/login', {
@@ -21,13 +26,19 @@ class Login extends Component {
         localStorage.setItem('authToken', response.token);
       }
 
-      if (response.data) {
-        localStorage.setItem('authUser', JSON.stringify(response.data));
-      }
+      UserStorage.setAuthStatus(JSON.stringify(response.data));
+
+      this.setState({
+        isAuthenticated: UserStorage.getAuthStatus()
+      });
     }
-  }
+  };
 
   render() {
+    if (this.state.isAuthenticated) {
+      return <Redirect to='/' />
+    }
+
     return (
       <form onSubmit={this.submit}>
         <div>
@@ -39,7 +50,7 @@ class Login extends Component {
         <input type="submit" value="Login" />
       </form>
     );
-  }
+  };
 }
 
 export default Login;
