@@ -21,9 +21,9 @@ class ApiService {
       })
       .then(response => {
         if(response.ok) return response.json();
-        throw new Error(`Request rejected with status ${response.status}`);
+        throw response.json();
       })
-      .catch(error => null);
+      .catch(error => {return error});
   }
 
   static post(url, data) {
@@ -34,9 +34,9 @@ class ApiService {
       })
       .then(response => {
         if(response.ok) return response.json();
-        throw new Error(`Request rejected with status ${response.status}`);
+        throw response.json();
       })
-      .catch(error => null);
+      .catch(error => {return error});
   }
 }
 

@@ -8,7 +8,7 @@ class Header extends Component {
 
     this.state = {
       isAuthenticated: UserStorage.getAuthStatus()
-    }
+    };
   };
 
   logout = async () => {
@@ -16,20 +16,22 @@ class Header extends Component {
 
     this.setState({
       isAuthenticated: UserStorage.getAuthStatus()
-    })
+    });
+
+    this.props.setIsAuth(this.state);
   };
 
   render() {
-    let loginButton = <a href='javascript:;' onClick={this.logout}>Logout</a>;
     if (!UserStorage.getAuthStatus()) {
-      loginButton = <Link to='/login'>Login</Link>;
+      return (
+        <div>
+          <Link to='/register'>Register</Link>
+          <Link to='/login'>Login</Link>
+        </div>
+      );
     }
 
-    return (
-      <div>
-        {loginButton}
-      </div>
-    );
+    return <a href='javascript:;' onClick={this.logout}>Logout</a>;
   };
 }
 
