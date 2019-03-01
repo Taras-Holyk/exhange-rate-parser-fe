@@ -1,11 +1,6 @@
-form {
+.form {
   width: 350px;
-  margin: 20% auto 0;
-  border: 1px solid grey;
+  margin: 15% auto 0;
+  border: 1px solid lightgray;
   padding: 10px;
-
-  input[type="text"] {
-    width: 98%;
-    display: block;
-  }
 }

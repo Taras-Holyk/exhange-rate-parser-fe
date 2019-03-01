@@ -53,26 +53,28 @@ class Register extends Component {
     }
 
     return (
-      <form onSubmit={this.submit}>
+      <form onSubmit={this.submit} className="form">
         { this.state.success && <h2>Success</h2> }
         { this.state.errors.length > 0 && <ValidationErrorsList errors={this.state.errors}/> }
         <div>
-          <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name"/>
+          <label htmlFor="name" className="form__label">Name</label>
+          <input type="text" name="name" id="name" className="form__input"/>
         </div>
         <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email"/>
+          <label htmlFor="email" className="form__label">Email</label>
+          <input type="email" name="email" id="email" className="form__input"/>
         </div>
         <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password"/>
+          <label htmlFor="password" className="form__label">Password</label>
+          <input type="password" name="password" id="password" className="form__input"/>
         </div>
         <div>
-          <label htmlFor="password_confirmation">Password confirmation</label>
-          <input type="password" name="password_confirmation" id="password_confirmation"/>
+          <label htmlFor="password_confirmation" className="form__label">Password confirmation</label>
+          <input type="password" name="password_confirmation" id="password_confirmation" className="form__input"/>
         </div>
-        <input type="submit" value="Register" />
+        <div className="form__buttons">
+          <input type="submit" value="Register" className="form__submit-button" />
+        </div>
       </form>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import UserStorage from './../../services/UserStorage';
+import './Header.scss';
 
 class Header extends Component {
   constructor(props) {
@@ -22,16 +23,22 @@ class Header extends Component {
   };
 
   render() {
-    if (!UserStorage.getAuthStatus()) {
-      return (
-        <div>
-          <Link to='/register'>Register</Link>
-          <Link to='/login'>Login</Link>
-        </div>
-      );
-    }
-
-    return <a href='javascript:;' onClick={this.logout}>Logout</a>;
+    const authUser = JSON.parse(localStorage.getItem('authUser'));
+    return (
+      <div className="header">
+        {
+          !UserStorage.getAuthStatus()
+          ? <React.Fragment>
+              <Link to='/register'>Register</Link>
+              <Link to='/login'>Login</Link>
+            </React.Fragment>
+          : <React.Fragment>
+              <span className="header__user">{authUser.name}</span>
+              <a href='javascript:;' onClick={this.logout}>Logout</a>
+            </React.Fragment>
+        }
+      </div>
+    );
   };
 }
 

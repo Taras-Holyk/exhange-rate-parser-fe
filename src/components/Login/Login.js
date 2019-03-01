@@ -54,18 +54,20 @@ class Login extends Component {
     }
 
     return (
-      <form onSubmit={this.submit}>
+      <form onSubmit={this.submit} className="form">
         { this.state.errorMessage.length > 0 && <div>{ this.state.errorMessage }</div> }
         { this.state.errors.length > 0 && <ValidationErrorsList errors={this.state.errors}/> }
         <div>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email"/>
+          <label htmlFor="email" className="form__label">Email</label>
+          <input type="email" name="email" id="email" className="form__input"/>
         </div>
         <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="password"/>
+          <label htmlFor="password" className="form__label">Password</label>
+          <input type="password" name="password" id="password" className="form__input"/>
         </div>
-        <input type="submit" value="Login" />
+        <div className="form__buttons">
+          <input type="submit" value="Login" className="form__submit-button" />
+        </div>
       </form>
     );
   };
