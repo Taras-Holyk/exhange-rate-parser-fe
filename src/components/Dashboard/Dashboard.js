@@ -74,10 +74,20 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="dashboard">
+        <div className="dashboard__filter-container">
+          <DatePicker
+            selected={this.state.selectedDate}
+            onChange={this.handleDateChange}
+            maxDate={this.state.maxDate}
+          />
+          <button onClick={this.fetchData} disabled={this.state.processing} className="dashboard__get-data">
+            {this.state.exchangeRates ? 'Update data' : 'Fetch data'}
+          </button>
+        </div>
         {
           this.state.exchangeRates &&
-          <div>
+          <React.Fragment>
             <table>
               <thead>
                 <tr>
@@ -101,20 +111,16 @@ class Dashboard extends Component {
                 }
               </tbody>
             </table>
-            <div>
-              <button onClick={this.exportCsv} disabled={this.state.processing}>Export to csv</button>
-              <button onClick={this.exportPdf} disabled={this.state.processing}>Export to pdf</button>
+            <div className="dashboard__export-container">
+              <button onClick={this.exportCsv} disabled={this.state.processing} className="dashboard__export-button">
+                Export to csv
+              </button>
+              <button onClick={this.exportPdf} disabled={this.state.processing} className="dashboard__export-button">
+                Export to pdf
+              </button>
             </div>
-          </div>
+          </React.Fragment>
         }
-        <DatePicker
-          selected={this.state.selectedDate}
-          onChange={this.handleDateChange}
-          maxDate={this.state.maxDate}
-        />
-        <button onClick={this.fetchData} disabled={this.state.processing}>
-          {this.state.exchangeRates ? 'Update data' : 'Fetch data'}
-        </button>
       </div>
     );
   }
