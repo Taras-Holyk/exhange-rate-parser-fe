@@ -1,0 +1,35 @@
+version: "3"
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    restart: on-failure
+  backend:
+    build: ./../parser
+    volumes:
+      - ./../parser:/app
+      - /app/node_modules
+    ports:
+      - "3002:3002"
+    links:
+      - mongo
+    restart: on-failure
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    restart: on-failure
+#    volumes:
+#      - ./data:/data/db
+  minfin:
+    build: ./../minfin-parser
+    volumes:
+      - ./../minfin-parser:/app
+      - /app/node_modules
+    ports:
+      - "3001:3001"
+    restart: on-failure
