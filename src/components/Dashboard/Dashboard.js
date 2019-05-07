@@ -50,14 +50,15 @@ class Dashboard extends Component {
     }
   };
 
-  exportCsv = () => {
+  exportCsv = async () => {
     if (!this.state.processing) {
       this.setState({
         ...this.state,
         processing: true
       });
 
-      alert('Not implemented yet');
+      const {data: {filename}} = await ApiService.get('exchange-rates/export/csv');
+      window.open(filename);
 
       this.setState({
         ...this.state,
