@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import ApiService from './../../services/Api';
 import UserStorage from './../../services/UserStorage';
 import './Login.scss';
@@ -67,6 +67,7 @@ class Login extends Component {
         </div>
         <div className="form__buttons">
           <input type="submit" value="Login" className="form__submit-button" />
+          <Link to="/reset-password">Forgot password?</Link>
         </div>
       </form>
     );
