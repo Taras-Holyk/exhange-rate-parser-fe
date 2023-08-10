@@ -42,7 +42,7 @@ class App extends Component {
             component={Register}
           />
           <Route
-            path='/reset-password-form'
+            path='/reset-password'
             component={ResetPassword}
           />
         </Switch>
