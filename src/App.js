@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import {Route, Switch} from 'react-router-dom';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
+import ResetPassword from './components/ResetPassword/ResetPassword';
 import ProtectedRoute from './helpers/ProtectedRoute';
 import UserStorage from './services/UserStorage';
 
@@ -39,6 +40,10 @@ class App extends Component {
           <Route
             path='/register'
             component={Register}
+          />
+          <Route
+            path='/reset-password'
+            component={ResetPassword}
           />
         </Switch>
       </div>
