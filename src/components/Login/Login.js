@@ -67,7 +67,7 @@ class Login extends Component {
         </div>
         <div className="form__buttons">
           <input type="submit" value="Login" className="form__submit-button" />
-          <Link to="/reset-password">Forgot password?</Link>
+          <Link to="/reset-password-form">Forgot password?</Link>
         </div>
       </form>
     );
