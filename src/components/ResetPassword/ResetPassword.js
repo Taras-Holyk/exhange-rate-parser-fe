@@ -49,7 +49,7 @@ class ResetPassword extends Component {
           <input type="password" name="password" id="password" className="form__input" value={this.state.password} onChange={this.handleChange}/>
         </div>
         <div className="form__buttons">
-          <input type="submit" value="Reset Password" className="form__submit-button" />
+          <input type="submit" value="Reset Your Password Now" className="form__submit-button" />
         </div>
       </form>
     );
